@@ -1,0 +1,24 @@
+/*
+  this file is for attribution only of zeus
+  And public attribution of longcheer platforms(like M7 and so and)
+*/
+#include "longcheer-sm6225-common.dtsi"
+#include "erhu-pinctrl.dtsi"
+#include "lc_chg/lc_chg.dtsi"
+
+&sdhc_2 {
+	cd-gpios = <&tlmm 88 GPIO_ACTIVE_HIGH>;
+};
+
+&soc {
+/* expand efs ram size to 3M start */
+	qcom,rmtfs_sharedmem@0 {
+		compatible = "qcom,sharedmem-uio";
+		reg = <0x0 0x300000>;
+		reg-names = "rmtfs";
+		qcom,client-id = <0x00000001>;
+		qcom,guard-memory;
+		qcom,vm-nav-path;
+	};
+/* expand efs ram size to 3M end */
+};
