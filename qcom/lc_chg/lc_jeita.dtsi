@@ -1,0 +1,59 @@
+
+&lc_chg_manager {
+	step_jeita {
+                max_charger_voltage = <9000000>;
+                fv_offset_15_to_35 = <50>;
+                fv_offset_35_to_48 = <60>;
+                iterm = <500>;
+                ffc_low_tbat = <150>;
+                ffc_high_tbat = <480>;
+                ffc_medium_tbat = <350>;
+                ffc_high_soc = <95>;
+                under_4200_curr_offset = <0>;
+                step_fallback_hyst = <25>;
+                step_forward_hyst = <5>;
+                jeita_fallback_hyst = <5>;
+                jeita_forward_hyst = <5>;
+                //step-chg-en;
+                /*
+                jeita-batt-map is used map batt_id and jeita cfg id 
+                eg. <0 0 1> means batt_id-0&1 use cfg-0, batt_id-2 use cfg-1
+                */
+                jeita-batt-map = <0 0 0 0>;
+		jeita-temp-level-0 = <0 150 450 551 580>; //<cold cool good warm hot>
+/*
+		jeita_cv_temp_step-0 = <4>;
+                jeita_fcc_cfg-0 = <     0       99	600
+                                        100     149     1850
+                                        150     449     3600
+                                        450     559     3100>;
+                jeita_fv_cfg-0 = <      0       99	4480
+                                        100     149     4480
+                                        150     449     4480
+                                        450     559     4096>;
+*/
+/*
+		eita_cv_vol_step-0 = <4>
+		step_chg_cfg_cycle-0 = <3600    4250    6000
+                                        4251    4300    6000
+                                        4301    4480    5000
+                                        4481    4530    4000>;
+*/
+		max-power = <18>; //max charging power:18w
+		volt-framework = <4480>; //voltage framework:4.48V
+		jeita-cyclecount-bounds-0 = <0 101 201 301 801>;	// row
+		jeita-temp-bounds-0 = <0 100 150 200 450>;	// line
+		jeita-cyclecount-fcc-cfg-0 = <
+			622	1867	2490	3600	3112
+			622	1867	2490	3600	3112
+			622	1867	2490	3600	3112
+			622	1867	2490	3600	3112
+			622	1867	1992	2880	2490>;
+		jeita-cyclecount-fv-cfg-0 = <
+			4480	4480	4480	4480	4100
+			4480	4480	4470	4470	4100
+			4480	4480	4460	4460	4100
+			4480	4480	4450	4450	4100
+			4480	4480	4450	4450	4100>;
+	};
+};
